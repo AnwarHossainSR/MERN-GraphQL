@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -12,7 +13,9 @@
     "apollo-server": "^3.8.1",
     "bcryptjs": "^2.4.3",
     "graphql": "^16.5.0",
+    "graphql-subscriptions": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.4"
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16"
   }
 }
