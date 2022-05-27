@@ -9,14 +9,26 @@ function DeleteButton({ postId, callback }) {
 
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     update(proxy) {
+      console.log('called');
       setConfirmOpen(false);
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY,
       });
-      data.getPosts = data.getPosts.filter((p) => p.id !== postId);
-      proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+      // data.getPosts = data.getPosts.filter((p) => p.id !== postId);
+      // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+
+      proxy.writeQuery({
+        query: FETCH_POSTS_QUERY,
+        data: {
+          getPosts:  data.getPosts.filter((p) => p.id !== postId),
+        },
+      });
       if (callback) callback();
     },
+    onError(err) { 
+      console.log(err);
+    }
+    ,
     variables: {
       postId,
     },
